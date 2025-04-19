@@ -2,14 +2,12 @@ let buttonColours = ["red", "blue", "green", "yellow"];
 let gamePattern = [];
 let userClickedPattern = [];
 let gameStarted = false;
-let keyCount = 0;
 let level = 0;
-//
 
+//User key press to start game
 $(document).on("keydown", function (e) {
-    gameStarted = true;
-    keyCount++;
-    if (gameStarted && keyCount === 1) {
+    if (!gameStarted) {
+        gameStarted = true;
         $("#level-title").text("Level " + level);
         nextSequence();
     }
@@ -53,7 +51,6 @@ function animatePress(currentColour) {
 
 function startOver() {
     level = 0;
-    keyCount = 0;
     gameStarted = false;
     gamePattern = [];
 
